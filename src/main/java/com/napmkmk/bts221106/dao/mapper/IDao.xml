@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="com.napmkmk.bts221106.dao.IDao">
+	<insert id="writeDao">
+		INSERT INTO mvc_board(bid, bname, btitle, bcontent) VALUES (mvc_board_seq.nextval, #{param1}, #{param2}, #{param3})
+	</insert>
+	
+	<select id="listDao" resultType="com.napmkmk.bts221106.dto.ContentDto">
+		SELECT * FROM mvc_board ORDER BY bid DESC
+	</select>
+	
+	<select id="content_view_Dao" resultType="com.napmkmk.bts221106.dto.ContentDto">
+		SELECT * FROM mvc_board WHERE bid=#{param1}
+	</select>
+	<delete id="deleteDao">
+		DELETE FROM mvc_board WHERE bid=#{param1}
+	</delete>
+	<update id="modifyDao">
+		UPDATE mvc_board SET bname=#{param2} , btitle=#{param3} , bcontent=#{param4} WHERE bid=#{param1}
+	</update>
+	<select id="mviewDao" resultType="com.napmkmk.bts221106.dto.ContentDto">
+		SELECT * FROM mvc_board WHERE bid=#{param1}
+	</select>
+	<insert id="replyDao">
+		INSERT INTO mvc_board(bid, bname, btitle, bcontent, bgroup, bstep, bindent) VALUES (mvc_board_seq.nextval, #{param1}, #{param2}, #{param3},#{param4},#{param5},#{param6})
+	</insert>
+
+</mapper>
